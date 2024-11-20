@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SImple Kanban</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/query.css" />
+    <link rel="stylesheet" href="./css/genaral.css" />
+  </head>
+  <body>
+    <section class="container mx-auto" style="background-color: aliceblue">
+      <div>
+        <h2 class="custom-center custom-p-8">A Simple Kanban Project</h2>
+      </div>
+      <div class="custom-grid">
+        <div style="background-color: bisque" class="">
+          <p>Completed:</p>
+        </div>
+        <div style="background-color: aquamarine" class="">
+          <p>To Do:</p>
+          <div>
+            <button id="open-modal-btn" class="btn btn--full">Add New</button>
+          </div>
+          <div
+            class="column-body"
+            id="todo-body"
+            draggable="true"
+            ondragstart="drag(event)"
+          ></div>
+        </div>
+        <div style="background-color: burlywood" class="">
+          <p>Pending:</p>
+          <div id="pending-body" class="column-body"></div>
+        </div>
+        <div style="background-color: brown" class="">
+          <p>In Review:</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Practice -->
+    <section id="drag-drop-section" class="drag-drop-section">
+      <div class="column-container" id="column1">
+        <div class="column-header">Column 1</div>
+        <div
+          class="column-body"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          <div
+            id="drag1"
+            class="draggable"
+            draggable="true"
+            ondragstart="drag(event)"
+          >
+            Task 1
+          </div>
+          <div
+            id="drag2"
+            class="draggable"
+            draggable="true"
+            ondragstart="drag(event)"
+          >
+            Task 2
+          </div>
+        </div>
+      </div>
+      <div class="column-container" id="column2">
+        <div class="column-header">Column 2</div>
+        <div
+          class="column-body"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        ></div>
+      </div>
+      <div class="column-container" id="column3">
+        <div class="column-header">Column 3</div>
+        <div
+          class="column-body"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Add New User</h2>
+        <form id="add-user-form">
+          <input type="hidden" id="user-id" />
+          <div class="form-group">
+            <label for="name">Title:</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input
+              type="description"
+              id="description"
+              name="description"
+              required
+            />
+          </div>
+          <button type="submit" class="submit-btn">Add new Task</button>
+        </form>
+      </div>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/drag.js"></script>
+  </body>
+</html>
