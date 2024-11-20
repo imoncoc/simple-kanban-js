@@ -14,9 +14,6 @@
         <h2 class="custom-center custom-p-8">A Simple Kanban Project</h2>
       </div>
       <div class="custom-grid">
-        <div style="background-color: bisque" class="">
-          <p>Completed:</p>
-        </div>
         <div style="background-color: aquamarine" class="">
           <p>To Do:</p>
           <div>
@@ -25,62 +22,37 @@
           <div
             class="column-body"
             id="todo-body"
-            draggable="true"
-            ondragstart="drag(event)"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
           ></div>
         </div>
         <div style="background-color: burlywood" class="">
           <p>Pending:</p>
-          <div id="pending-body" class="column-body"></div>
+          <div
+            id="pending-body"
+            class="column-body"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
+          ></div>
         </div>
         <div style="background-color: brown" class="">
           <p>In Review:</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Practice -->
-    <section id="drag-drop-section" class="drag-drop-section">
-      <div class="column-container" id="column1">
-        <div class="column-header">Column 1</div>
-        <div
-          class="column-body"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        >
           <div
-            id="drag1"
-            class="draggable"
-            draggable="true"
-            ondragstart="drag(event)"
-          >
-            Task 1
-          </div>
-          <div
-            id="drag2"
-            class="draggable"
-            draggable="true"
-            ondragstart="drag(event)"
-          >
-            Task 2
-          </div>
+            id="review-body"
+            class="column-body"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
+          ></div>
         </div>
-      </div>
-      <div class="column-container" id="column2">
-        <div class="column-header">Column 2</div>
-        <div
-          class="column-body"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-      </div>
-      <div class="column-container" id="column3">
-        <div class="column-header">Column 3</div>
-        <div
-          class="column-body"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
+        <div style="background-color: bisque" class="">
+          <p>Completed:</p>
+          <div
+            id="complete-body"
+            class="column-body"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
+          ></div>
+        </div>
       </div>
     </section>
 
