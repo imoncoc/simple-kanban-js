@@ -4,11 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeModalBtn = document.getElementsByClassName("close-btn")[0];
   const saveTaskBtn = document.querySelector(".submit-btn");
 
-  let todo = JSON.parse(localStorage.getItem("todo")) || [
-    { id: 1, title: "Task 1", description: "Description 1" },
-    { id: 2, title: "Task 2", description: "Description 2" },
-    { id: 3, title: "Task 3", description: "Description 3" },
-  ];
+  let todo = JSON.parse(localStorage.getItem("todo")) || [];
 
   const todoBody = document.getElementById("todo-body");
 
@@ -16,26 +12,32 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayTodoItems() {
     todoBody.innerHTML = ""; // Clear any existing tasks
 
-    todo.forEach((item) => {
-      const card = document.createElement("div");
-      card.classList.add(
-        "card-container",
-        "my-4",
-        "p-4",
-        "rounded",
-        "shadow-lg"
-      );
-      card.style.backgroundColor = "#fff";
+    if (todo.length === 0) {
+      const noDataMessage = document.createElement("p");
+      noDataMessage.textContent = "No todo data";
+      todoBody.appendChild(noDataMessage);
+    } else {
+      todo.forEach((item) => {
+        const card = document.createElement("div");
+        card.classList.add(
+          "card-container",
+          "my-4",
+          "p-4",
+          "rounded",
+          "shadow-lg"
+        );
+        card.style.backgroundColor = "#fff";
 
-      card.innerHTML = `
-              <div class="card">
-              <h3 class="text-xl font-bold">${item.title}</h3>
-              <p>${item.description}</p>
-              </div>
-          `;
+        card.innerHTML = `
+                <div class="card">
+                <h3 class="text-xl font-bold">${item.title}</h3>
+                <p>${item.description}</p>
+                </div>
+            `;
 
-      todoBody.appendChild(card);
-    });
+        todoBody.appendChild(card);
+      });
+    }
   }
 
   displayTodoItems();
